@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class Student{
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int choice,n;
+        int choice,n,srch;
         Connection con=null;
         Statement st=null;
         ResultSet rs=null;
@@ -28,9 +28,10 @@ public class Student{
         System.out.println("Student Administration Panel :");
         System.out.println("1 Store Data.");
         System.out.println("2 Show Data.");
-        System.out.println("3 Delete Data.");
-        System.out.println("4 Exit Opertion.");
-        System.out.println("What you want 1 to 4 :");
+        System.out.println("3 Search Data.");
+        System.out.println("4 Delete Data.");
+        System.out.println("5 Exit Opertion.");
+        System.out.println("What you want 1 to 5 :");
         choice =sc.nextInt();
         switch(choice)
         {
@@ -64,6 +65,23 @@ public class Student{
                 }
                 break;
             case 3:
+                System.out.println("Enter roll no : ");
+                srch=sc.nextInt();
+                try{
+                    rs=st.executeQuery("select * from data where rollno="+srch);
+                    if(rs.next()){
+                        System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getFloat(3)+" "+rs.getString(4));
+                    }
+                    else{
+                        System.out.println("Record not found");
+                    }
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
+                break;
+            case 4:
                 System.out.println("Enter want you delete :");
                 int dlt=sc.nextInt();
                 try{
@@ -74,7 +92,7 @@ public class Student{
                     System.out.println(e);
                 }
                 break;
-            case 4:
+            case 5:
                 System.exit(0);
                 break;
             default:
