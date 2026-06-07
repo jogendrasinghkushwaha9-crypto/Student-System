@@ -32,7 +32,14 @@ public class Student{
         switch(choice)
         {
             case 1:
-
+                System.out.println("Enter Roll no : ");
+                int rn=sc.nextInt();
+                System.out.println("Enter Name : ");
+                String name=sc.next();
+                System.out.println("Enter Marks : ");
+                float mrks=sc.nextFloat();
+                System.out.println("Enter grade : ");
+                String grd=sc.next();
                 break;
             case 2:
 
